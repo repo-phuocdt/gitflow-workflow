@@ -9,44 +9,54 @@ Cú pháp:
 - `git pull origin master`
 
 Checkout ra branch mới để thực hiện chức năng
+
 Cú pháp:
 - `git checkout -b <feature_branch>`
 
 Sau khi code xong chức năng thì commit code
+
 Cú pháp:
 - `git add .` là lấy tất cả file thay đổi hoặc lấy từng file `git add <tên file>`
 - `git commit -m "<nội dung commit>`
 
 Thực hiện pull branch `master` để lấy code mới nhất và xem có bị conflict hay không.
+
 Cú pháp:
 - `git pull origin master`
 
-######Nếu có conflict với master
+__Nếu có conflict với master__
+
 Sau khi fix conflict thì commit code
+
 Cú pháp:
 - `git add .` là lấy tất cả file thay đổi hoặc lấy từng file `git add <tên file>`
 - `git commit -m "<nội dung commit>`
 
 Thực hiện push code
+
 Cú pháp:
 `git push origin HEAD` hoặc `git push origin <feature_branch>`
 
 Tạo Pull request vào 2 branch `master` và `develop`
 
 ### Thực hiện fix conflict trên develop
+
 __Lưu ý__: Luôn luôn phải checkout branch mới để chức nằng branch chính không bị dính code của những chức năng branch khác.
 
 Từ branch chức năng hiện tại checkout ra branch fix conflict
+
 Cú pháp:
 - `git checkout -B fix/conflict/develop`
 - `git pull origin develop`
 
 Sau khi fix conflict thì commit code
+
 Cú pháp:
 - `git add .` là lấy tất cả file thay đổi hoặc lấy từng file `git add <tên file>`
 - `git commit -m "<nội dung commit>`
 
 Thực hiện push code
+
 Cú pháp:
 `git push origin HEAD` hoặc `git push origin fix/conflict/develop`
 
@@ -58,20 +68,24 @@ Lấy branch chức năng cần muốn đưa lên `staging`
 
 Tạo Pull request vào branch `staging`
 
-######Nếu có conflict với staging
+__Nếu có conflict với staging__
+
 __Lưu ý__: Luôn luôn phải checkout branch mới để chức nằng branch chính không bị dính code của những chức năng branch khác.
 
 Từ branch chức năng hiện tại checkout ra branch fix conflict
+
 Cú pháp:
 - `git checkout -B fix/conflict/staging`
 - `git pull origin staging`
 
 Sau khi fix conflict thì commit code
+
 Cú pháp:
 - `git add .` là lấy tất cả file thay đổi hoặc lấy từng file `git add <tên file>`
 - `git commit -m "<nội dung commit>`
 
 Thực hiện push code
+
 Cú pháp:
 `git push origin HEAD` hoặc `git push origin staging`
 
@@ -85,30 +99,36 @@ Cú pháp:
 `git checkout <branch chức năng bị bug>`
 
 Sau khi fix bug thì commit code
+
 Cú pháp:
 - `git add .` là lấy tất cả file thay đổi hoặc lấy từng file `git add <tên file>`
 - `git commit -m "<nội dung commit>`
 
 Thực hiện push code
+
 Cú pháp:
 `git push origin HEAD` hoặc `git push origin <branch chức năng bị bug>`
 
 Tạo Pull request vào 2 branch `staging` và `develop`
 
-######Nếu có conflict với develop
+__Nếu có conflict với develop__
+
 __Lưu ý__: Luôn luôn phải checkout từ branch mới để code branch chính không bị dính code của những branch khác.
 
 Từ branch chức năng hiện tại checkout ra branch fix conflict
+
 Cú pháp:
 - `git checkout -B fix/conflict/develop`
 - `git pull origin develop`
 
 Sau khi fix conflict thì commit code
+
 Cú pháp:
 - `git add .` là lấy tất cả file thay đổi hoặc lấy từng file `git add <tên file>`
 - `git commit -m "<nội dung commit>`
 
 Thực hiện push code
+
 Cú pháp:
 `git push origin HEAD` hoặc `git push origin develop`
 
