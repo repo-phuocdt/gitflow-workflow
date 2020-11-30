@@ -1,67 +1,115 @@
-# Git Workflow
+# Git Workflow of QOffice
 
-## Thực hiện 1 chức năng mới và hot fix trên live
+## Thực hiện chức năng mới và Hot fix trên master
 
-Checkout từ branch master
+__Lưu ý__: Luôn luôn phải checkout từ branch `master`
 
-1. `git checkout master`
-2. `git pull origin master`
-3. `git checkout -b <feature_branch>`
+Cú pháp:
+- `git checkout master`
+- `git pull origin master`
 
-4. Sau khi code xong chức năng,
-5. Thực hiên pull `git pull origin master` để lấy code mới nhất - trên master và xem có bị conflict hay không.
-6. Tiếp theo, push code lên với 2 Pull request.
-7. 1 Pull request vào branch master.
-8. 1 Pull request vào branch develop.
+Checkout ra branch mới để thực hiện chức năng
+Cú pháp:
+- `git checkout -b <feature_branch>`
 
-### Pull request develop bị conflict
+Sau khi code xong chức năng thì commit code
+Cú pháp:
+- `git add .` là lấy tất cả file thay đổi hoặc lấy từng file `git add <tên file>`
+- `git commit -m "<nội dung commit>`
 
-1. Thực hiện checkout `git checkout -B fix/conflict/develop`.
-2. `git pull origin develop`
-3. Sau khi fix conflict xong thì push code lên và tạo Pull request vào branch `develop`
+Thực hiện pull branch `master` để lấy code mới nhất và xem có bị conflict hay không.
+Cú pháp:
+- `git pull origin master`
 
-### Pull request staging bị conflict
+######Nếu có conflict với master
+Sau khi fix conflict thì commit code
+Cú pháp:
+- `git add .` là lấy tất cả file thay đổi hoặc lấy từng file `git add <tên file>`
+- `git commit -m "<nội dung commit>`
 
-1. Hãy luôn giũ branch chính của mình không bị dính code của những branch khác nên thực hiện như sau.
-2. Thực hiện checkout `git checkout -B fix/conflict/staging`.
-3. `git pull origin <branch bị conflict>`.
-4. Sau khi fix conflict xong thì push code lên và tạo Pull request vào branch `<branch bị conflict>`.
+Thực hiện push code
+Cú pháp:
+`git push origin HEAD` hoặc `git push origin <feature_branch>`
+
+Tạo Pull request vào 2 branch `master` và `develop`
+
+### Thực hiện fix conflict trên develop
+__Lưu ý__: Luôn luôn phải checkout branch mới để chức nằng branch chính không bị dính code của những chức năng branch khác.
+
+Từ branch chức năng hiện tại checkout ra branch fix conflict
+Cú pháp:
+- `git checkout -B fix/conflict/develop`
+- `git pull origin develop`
+
+Sau khi fix conflict thì commit code
+Cú pháp:
+- `git add .` là lấy tất cả file thay đổi hoặc lấy từng file `git add <tên file>`
+- `git commit -m "<nội dung commit>`
+
+Thực hiện push code
+Cú pháp:
+`git push origin HEAD` hoặc `git push origin fix/conflict/develop`
+
+Tạo Pull request vào branch `develop`
+
+## Thực hiện đưa chức năng lên staging
+
+Lấy branch chức năng cần muốn đưa lên `staging`
+
+Tạo Pull request vào branch `staging`
+
+######Nếu có conflict với staging
+__Lưu ý__: Luôn luôn phải checkout branch mới để chức nằng branch chính không bị dính code của những chức năng branch khác.
+
+Từ branch chức năng hiện tại checkout ra branch fix conflict
+Cú pháp:
+- `git checkout -B fix/conflict/staging`
+- `git pull origin staging`
+
+Sau khi fix conflict thì commit code
+Cú pháp:
+- `git add .` là lấy tất cả file thay đổi hoặc lấy từng file `git add <tên file>`
+- `git commit -m "<nội dung commit>`
+
+Thực hiện push code
+Cú pháp:
+`git push origin HEAD` hoặc `git push origin staging`
+
+Tạo Pull request vào branch `staging`
 
 ## Thực hiện fix bug trên staging
 
-- __Lưu ý__: Bug chức năng ở branch nào thì fix ở branch đó
+__Lưu ý__: Bug chức năng ở branch nào thì fix ở branch đó
 
-1. `git checkout <branch chức năng bị bug>`
-2. Sau khi fix bug xong thì tạo 2 Pull request.
-3. 1 Pull request vào branch staging.
-4. 1 Pull request vào branch develop.
+Cú pháp:
+`git checkout <branch chức năng bị bug>`
 
-### Pull request develop bị conflict
+Sau khi fix bug thì commit code
+Cú pháp:
+- `git add .` là lấy tất cả file thay đổi hoặc lấy từng file `git add <tên file>`
+- `git commit -m "<nội dung commit>`
 
-1. Thực hiện checkout `git checkout -B fix/conflict/develop`.
-2. `git pull origin develop`
-3. Sau khi fix conflict xong thì push code lên và tạo Pull request vào branch `develop`
+Thực hiện push code
+Cú pháp:
+`git push origin HEAD` hoặc `git push origin <branch chức năng bị bug>`
 
-## Thực hiện fix bug trên staging mà chức năng bị bug phụ thuộc vào chức năng khác
+Tạo Pull request vào 2 branch `staging` và `develop`
 
-- __Lưu ý__: Khi deploy lên live bắt buộc phải lên cùng lúc những chức năng liên quan với nhau
+######Nếu có conflict với develop
+__Lưu ý__: Luôn luôn phải checkout từ branch mới để code branch chính không bị dính code của những branch khác.
 
-1. `git checkout <branch chức năng bị bug>`
-2. Pull những chức năng liên quan ảnh hưởng tới nhau
-3. `git pull origin <những branch liên quan>`
-4. Sau khi fix bug xong thì tạo 3 Pull request.
-5. 1 Pull request vào branch master.
-6. 1 Pull request vào branch staging.
-7. 1 Pull request vào branch develop.
+Từ branch chức năng hiện tại checkout ra branch fix conflict
+Cú pháp:
+- `git checkout -B fix/conflict/develop`
+- `git pull origin develop`
 
-### Pull request master bị conflict
+Sau khi fix conflict thì commit code
+Cú pháp:
+- `git add .` là lấy tất cả file thay đổi hoặc lấy từng file `git add <tên file>`
+- `git commit -m "<nội dung commit>`
 
-1. Thực hiện checkout `git checkout -B fix/conflict/master`.
-2. `git pull origin master`
-3. Sau khi fix conflict xong thì push code lên và tạo Pull request vào branch `master`
+Thực hiện push code
+Cú pháp:
+`git push origin HEAD` hoặc `git push origin develop`
 
-### Pull request develop bị conflict
-
-1. Thực hiện checkout `git checkout -B fix/conflict/develop`.
-2. `git pull origin develop`
-3. Sau khi fix conflict xong thì push code lên và tạo Pull request vào branch `develop`
+Tạo Pull request vào branch `develop`
